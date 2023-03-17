@@ -32,7 +32,7 @@ const Register = () => {
 		if (loggedIn) {
 			navigate('/')
 		}
-	}, )
+	},)
 
   return (  
     <div className='text-center pt-5'>
