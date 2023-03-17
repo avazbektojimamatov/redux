@@ -1,7 +1,8 @@
-import {Routes, Route} from 'react-router-dom'
-import {Main, Login, Register, Navbar} from './components'
+/* eslint-disable react-hooks/exhaustive-deps */
 import {useEffect} from 'react'
 import {useDispatch} from 'react-redux'
+import {Routes, Route} from 'react-router-dom'
+import {Main, Login, Register, Navbar, ArticleDetail} from './components'
 import {getItem} from './helpers/persistance-storage'
 import AuthService from './service/auth'
 import {signUserSuccess} from './slice/auth'
@@ -36,16 +37,18 @@ const App = () => {
 			getUser()
 		}
 		getArticles()
-	},)
-	
+	}, [])
 	return (
-    <div>
-      <Navbar/>
-			<Routes>
-				<Route path='/' element={<Main />} />
-				<Route path='/login' element={<Login />} />
-				<Route path='/register' element={<Register />} />
-			</Routes>
+		<div>
+			<Navbar />
+			<div className='container'>
+				<Routes>
+					<Route path='/' element={<Main />} />
+					<Route path='/login' element={<Login />} />
+					<Route path='/register' element={<Register />} />
+					<Route path='/article/:slug' element={<ArticleDetail />} />
+				</Routes>
+			</div>
 		</div>
 	)
 }
